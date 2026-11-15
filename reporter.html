@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0b1117">
+  <meta name="description" content="UG-GHRS worker hazard reporting">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="stylesheet" href="/styles.css">
+  <title>UG-GHRS | Worker reporting</title>
+  <link rel="stylesheet" href="/reporter.css">
+</head>
+<body>
+  <div class="report-shell">
+    <header class="report-head">
+      <div class="report-brand">
+        <div class="brand-mark">UG</div>
+        <div>
+          <b>UG-GHRS</b>
+          <small>WORKER REPORTING PORTAL</small>
+        </div>
+      </div>
+      <a class="small-link" href="/manage">Management portal ↗</a>
+    </header>
+
+    <main class="report-card">
+      <span class="eyebrow">Underground safety observation</span>
+      <h1>Report a hazard</h1>
+      <p>Record the condition you observed and where it is located. This report is sent to the management register once the server acknowledges receipt. If connectivity is unavailable, the report stays queued on this device until it can sync.</p>
+
+      <form id="workerForm" class="report-form" data-api-base="/api">
+        <label>
+          Hazard title <span class="required">*</span>
+          <input name="title" required maxlength="120" placeholder="e.g. Loose rock near access drive">
+        </label>
+
+        <label>
+          Hazard category <span class="required">*</span>
+          <select name="category" required>
+            <option value="">Choose category</option>
+            <option>Ground instability</option>
+            <option>Water inflow</option>
+            <option>Ventilation</option>
+            <option>Electrical</option>
+            <option>Equipment / machinery</option>
+            <option>Misfire / explosives</option>
+            <option>Fire / heat</option>
+            <option>Slip, trip or fall</option>
+            <option>Other</option>
+          </select>
+        </label>
+
+        <label>
+          Severity as observed <span class="required">*</span>
+          <select name="severity" required>
+            <option value="">Choose severity</option>
+            <option>Critical</option>
+            <option>High</option>
+            <option>Medium</option>
+            <option>Low</option>
+            <option>Unsure - needs assessment</option>
+          </select>
+        </label>
+
+        <label>
+          Mine / shaft <span class="required">*</span>
+          <select name="shaft" required>
+            <option value="">Select shaft</option>
+            <option>South Shaft</option>
+            <option>North Shaft</option>
+            <option>West Shaft</option>
+            <option>Vent Shaft</option>
+          </select>
+        </label>
+
+        <label>
+          Level <span class="required">*</span>
+          <select name="level" required>
+            <option value="">Select level</option>
+            <option>Level 360</option>
+            <option>Level 420</option>
+            <option>Level 480</option>
+            <option>Level 520</option>
+            <option>Surface workshop</option>
+          </select>
+        </label>
+
+        <label>
+          Working area / section <span class="required">*</span>
+          <select name="section" required>
+            <option value="">Select section</option>
+            <option>Crosscut 7</option>
+            <option>Stope 4 Access</option>
+            <option>Pump Bay 2</option>
+            <option>Workshop Access</option>
+            <option>Crusher Drift</option>
+            <option>Service Raise</option>
+            <option>Loading Bay</option>
+            <option>Ore Pass</option>
+            <option>Ventilation Drift</option>
+          </select>
+        </label>
+
+        <label>
+          Reporter name / team
+          <input name="reporter" maxlength="80" placeholder="Name or team identifier">
+        </label>
+
+        <label>
+          Worker ID (optional)
+          <input name="reporterId" maxlength="80" placeholder="Mine-issued ID">
+        </label>
+
+        <label>
+          Shift
+          <select name="shift">
+            <option>Day shift</option>
+            <option>Night shift</option>
+            <option>Other / not specified</option>
+          </select>
+        </label>
+
+        <label>
+          Contact / radio call sign (optional)
+          <input name="contact" maxlength="80" placeholder="As approved by your mine">
+        </label>
+
+        <label class="wide">
+          What did you observe? <span class="required">*</span>
+          <textarea name="description" required maxlength="1500" placeholder="Describe what you saw, exact position, when it was noticed and any immediate action already taken. Do not put yourself at risk to collect evidence."></textarea>
+        </label>
+
+        <div class="wide safety-alert">
+          <b>Immediate danger?</b> Follow your mine's emergency, withdrawal, barricading and supervisor-notification procedures immediately. Do not rely on this application as an emergency alarm, evacuation instruction or work-clearance system. Never delay emergency action to complete a form.
+        </div>
+
+        <div class="wide report-actions">
+          <span id="connection" class="statusline">Checking connection…</span>
+          <button class="btn btn-primary" id="submitBtn" type="submit">Submit hazard report →</button>
+        </div>
+      </form>
+
+      <section id="success" class="success-panel" aria-live="polite">
+        <strong id="successTitle">Report received</strong>
+        <p id="successText"></p>
+        <button class="btn btn-ghost" id="newReport" type="button">＋ Submit another report</button>
+      </section>
+    </main>
+
+    <p class="footer-note">UG-GHRS · Worker reporting interface · Use only on a mine-approved device and network</p>
+  </div>
+
+  <script src="/reporter.js" defer></script>
+</body>
+</html>
+

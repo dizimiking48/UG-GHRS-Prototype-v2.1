@@ -1,0 +1,12 @@
+{
+  "name": "ug-ghrs-prototype",
+  "version": "3.0.0",
+  "private": true,
+  "description": "Underground Geotechnical Hazard Reporting System - separated worker reporting and management pilot prototype",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
