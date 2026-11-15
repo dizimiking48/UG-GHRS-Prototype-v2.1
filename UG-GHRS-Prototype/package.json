@@ -1,0 +1,12 @@
+{
+  "name": "ug-ghrs-prototype",
+  "version": "2.1.0",
+  "private": true,
+  "description": "Underground Geotechnical Hazard Reporting System - demonstrator prototype",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
